@@ -1,11 +1,10 @@
 {
-  "name": "line-bot-nodejs-starter",
+  "name": "polldium",
   "version": "1.0.0",
   "description": "starter point to create new line bot project",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "tsc -p . && node dist/index",
+    "dev": "tsc -p . && node dist/app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -13,7 +12,7 @@
     "bot",
     "messaging-api"
   ],
-  "author": "Sitthi Thiammekha",
+  "author": "Chinnatip Taemkaeo",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^5.5.0",

@@ -1,6 +1,7 @@
 const line = require('@line/bot-sdk')
-const config = require('../config.json')
+const config = require('../../config.json')
 const client = new line.Client(config)
+import { intentHandler } from './intentHandler'
 
 // simple reply function
 export const replyText = (token, texts) => {
@@ -9,8 +10,7 @@ export const replyText = (token, texts) => {
 }
 
 export const handleText = (message, replyToken) => {
-  console.log('get text >>>', message)
-  return replyText(replyToken, message.text)
+  return intentHandler(message, replyToken)
 }
 
 export const handleImage = (message, replyToken) => {

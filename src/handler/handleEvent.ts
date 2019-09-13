@@ -1,7 +1,7 @@
-import * as Handler from './handler'
+import * as Handler from './actionHandler'
 
 // callback function to handle a single event
-export function handleEvent(event) {
+export const handleEvent = async event => {
   const { type, message, postback, beacon, source, replyToken } = event
   switch (type) {
     case 'message':
