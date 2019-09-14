@@ -50,7 +50,7 @@ exports.sharePoint = function (token) {
     return client.replyMessage(token, [
         {
             type: 'flex',
-            altText: 'This is a Flex Message',
+            altText: 'Share_group - flex message',
             contents: {
                 type: 'bubble',
                 body: {
