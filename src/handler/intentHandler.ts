@@ -19,6 +19,14 @@ export const intentHandler = async (message, source, replyToken) => {
       await Richmenu.calling(userId)
       return Handler.replyText(replyToken, `เลือกเบอร์ติดต่อเจ้าหน้าที่`)
 
+    // Calling
+    case 'โทรหาสายด่วนกระทรวงยุติธรรม':
+      await Richmenu.shareCallingPage(userId)
+      return Handler.replyText(replyToken, `กรุณากดเบอร์โทรเจ้าหน้าที่`)
+    case 'โทรหาศูนย์ดำรงธรรม':
+      await Richmenu.shareCallingPage(userId)
+      return Handler.replyText(replyToken, `กรุณากดเบอร์โทรเจ้าหน้าที่`)
+
     // Topic
     case 'ปัญหาโดนโกง':
       await Richmenu.sharePage(userId)
@@ -70,6 +78,8 @@ export const intentHandler = async (message, source, replyToken) => {
     // Close ,Back or Share action
     case 'ย้อนกลับไปหน้าหัวข้อ':
       return await Richmenu.topic(userId)
+    case 'ย้อนกลับไปหน้าแรก':
+      return await Richmenu.removePage(userId)
     case 'ย้อนกลับไปหน้าเเรก':
       return await Richmenu.removePage(userId)
     case 'ปิดเมนู':
@@ -81,6 +91,8 @@ export const intentHandler = async (message, source, replyToken) => {
     case 'ย้อนกลับไปหน้า drawer':
       return Handler.drawerMenu(userId, replyToken)
     case 'เเชร์บทความนี้':
+      return Handler.sharePoint(replyToken)
+    case 'เเชร์น้องรพี':
       return Handler.sharePoint(replyToken)
     // return Handler.replyText(replyToken, `Redirect to SHARE pages.`)
     case 'เลือกอ่านหัวข้ออื่น':

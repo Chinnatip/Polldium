@@ -91,6 +91,16 @@ export const sharePage = userId =>
     json: true
   })
 
+export const shareCallingPage = userId =>
+  request({
+    method: 'POST',
+    uri: `https://api.line.me/v2/bot/user/${userId}/richmenu/richmenu-${config.rich_menu_action_share_calling}`,
+    headers: {
+      Authorization: `Bearer ${config.channelAccessToken}`
+    },
+    json: true
+  })
+
 export const drawer = userId =>
   request({
     method: 'POST',

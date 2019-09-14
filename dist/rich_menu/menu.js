@@ -92,6 +92,16 @@ exports.sharePage = function (userId) {
         json: true
     });
 };
+exports.shareCallingPage = function (userId) {
+    return request({
+        method: 'POST',
+        uri: "https://api.line.me/v2/bot/user/" + userId + "/richmenu/richmenu-" + config.rich_menu_action_share_calling,
+        headers: {
+            Authorization: "Bearer " + config.channelAccessToken
+        },
+        json: true
+    });
+};
 exports.drawer = function (userId) {
     return request({
         method: 'POST',
