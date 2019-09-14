@@ -41,6 +41,7 @@ var config = require('../../config.json');
 var client = new line.Client(config);
 var intentHandler_1 = require("./intentHandler");
 var Richmenu = require("../rich_menu/menu");
+var flex_share_card_1 = require("../flex_message/flex_share_card");
 // simple reply function
 exports.replyText = function (token, texts) {
     texts = Array.isArray(texts) ? texts : [texts];
@@ -48,29 +49,7 @@ exports.replyText = function (token, texts) {
 };
 exports.sharePoint = function (token) {
     return client.replyMessage(token, [
-        {
-            type: 'flex',
-            altText: 'Share_group - flex message',
-            contents: {
-                type: 'bubble',
-                body: {
-                    type: 'box',
-                    layout: 'vertical',
-                    contents: [
-                        {
-                            type: 'button',
-                            style: 'primary',
-                            height: 'sm',
-                            action: {
-                                type: 'uri',
-                                label: 'Share Polldium',
-                                uri: 'https://line.me/ti/p/~@258zuvzn'
-                            }
-                        }
-                    ]
-                }
-            }
-        }
+        flex_share_card_1.shareCard('มาเป็นเพื่อนกับน้องรพี', '@258zuvzn', 'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/Polldium_qr_code.png', 'เเสกน QR CODE นี้ จากนั้นเเอดเป็นเพื่อนกับน้องรพี เพื่อสอบถามปัญหาด้านกฎหมาย')
     ]);
 };
 exports.handleText = function (message, source, replyToken) {

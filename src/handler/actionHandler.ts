@@ -3,6 +3,7 @@ const config = require('../../config.json')
 const client = new line.Client(config)
 import { intentHandler } from './intentHandler'
 import * as Richmenu from '../rich_menu/menu'
+import { shareCard } from '../flex_message/flex_share_card'
 
 // simple reply function
 export const replyText = (token, texts) => {
@@ -12,29 +13,12 @@ export const replyText = (token, texts) => {
 
 export const sharePoint = token => {
   return client.replyMessage(token, [
-    {
-      type: 'flex',
-      altText: 'Share_group - flex message',
-      contents: {
-        type: 'bubble',
-        body: {
-          type: 'box',
-          layout: 'vertical',
-          contents: [
-            {
-              type: 'button',
-              style: 'primary',
-              height: 'sm',
-              action: {
-                type: 'uri',
-                label: 'Share Polldium',
-                uri: 'https://line.me/ti/p/~@258zuvzn'
-              }
-            }
-          ]
-        }
-      }
-    }
+    shareCard(
+      'มาเป็นเพื่อนกับน้องรพี',
+      '@258zuvzn',
+      'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/Polldium_qr_code.png',
+      'เเสกน QR CODE นี้ จากนั้นเเอดเป็นเพื่อนกับน้องรพี เพื่อสอบถามปัญหาด้านกฎหมาย'
+    )
   ])
 }
 
