@@ -9,5 +9,8 @@
   "rich_menu_action_listen_choose": "e75ef316ea3297247cb22bfb8f777331",
   "rich_menu_action_listen_agree": "d429d156ec61483def580518d1fd61ae",
   "rich_menu_action_read_more": "68aeb52bcab072ecf446dd63d5c10d2d",
-  "rich_menu_action_back": "bd2fc7b8917c63e054e2c57757d6ea7a"
+  "rich_menu_action_back": "bd2fc7b8917c63e054e2c57757d6ea7a",
+  "rich_menu_action_topics": "adaf837fd950fc4d1b6c0f26c7501256",
+  "rich_menu_action_calling": "3c9bf6a0a041d9c3c91ebc940473b469",
+  "rich_menu_action_drawer_guide": "87138bdc1d1588651d9a7ff0a8d7877d"
 }

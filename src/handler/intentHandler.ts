@@ -9,27 +9,30 @@ export const intentHandler = async (message, source, replyToken) => {
       return Handler.replyText(replyToken, `พิมพ์อะไรมาหน่อยซี่ ~~~`)
 
     // Opening action
-    case 'เริ่มทำโพลล์':
-      await Richmenu.nextPage(userId)
+    case 'ความรู้ด้านกฎหมาย':
+      await Richmenu.topic(userId)
       return Handler.replyText(
         replyToken,
-        `เลือกโหวต หรือทำความเข้าใจหัวข้อนี้ โดยการเลือก อ่านคำให้การ`
+        `เลือกหัวข้อที่ต้องการศึกษาได้เลยครับ`
       )
+    case 'ติดต่อเจ้าหน้าที่':
+      await Richmenu.calling(userId)
+      return Handler.replyText(replyToken, `เลือกเบอร์ติดต่อเจ้าหน้าที่`)
 
     // Topic
-    case 'รัฐธรรมนูญปี60':
-      return Handler.replyText(replyToken, [
-        'สรุปการดีเบต แจ็ก หม่า vs อีลอน มัสก์ ในงานประชุม World AI / โดย ลงทุนแมน ลงทุนแมนรับรองว่าเป็นเรื่องน่าสนใจที่สุดในช่วงนี้ เมื่อไม่กี่ชั่วโมงที่ผ่านมา มีการคุยกัน'
-      ])
-    // return Handler.drawerMenu(userId, replyToken)
-    case 'โรงไฟฟ้าถ่านหิน':
-      return Handler.drawerMenu(userId, replyToken)
-    case 'เสรีภาพทางเพศ':
-      return Handler.drawerMenu(userId, replyToken)
-    case 'ไมโครพลาสติค':
-      return Handler.drawerMenu(userId, replyToken)
-    case 'การค้าเสรี':
-      return Handler.drawerMenu(userId, replyToken)
+    // case 'รัฐธรรมนูญปี60':
+    //   return Handler.replyText(replyToken, [
+    //     'สรุปการดีเบต แจ็ก หม่า vs อีลอน มัสก์ ในงานประชุม World AI / โดย ลงทุนแมน ลงทุนแมนรับรองว่าเป็นเรื่องน่าสนใจที่สุดในช่วงนี้ เมื่อไม่กี่ชั่วโมงที่ผ่านมา มีการคุยกัน'
+    //   ])
+    // // return Handler.drawerMenu(userId, replyToken)
+    // case 'โรงไฟฟ้าถ่านหิน':
+    //   return Handler.drawerMenu(userId, replyToken)
+    // case 'เสรีภาพทางเพศ':
+    //   return Handler.drawerMenu(userId, replyToken)
+    // case 'ไมโครพลาสติค':
+    //   return Handler.drawerMenu(userId, replyToken)
+    // case 'การค้าเสรี':
+    //   return Handler.drawerMenu(userId, replyToken)
 
     // Drawer
     case 'โหวตเลย':

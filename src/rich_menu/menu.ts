@@ -11,6 +11,26 @@ export const nextPage = userId =>
     json: true
   })
 
+export const topic = userId =>
+  request({
+    method: 'POST',
+    uri: `https://api.line.me/v2/bot/user/${userId}/richmenu/richmenu-${config.rich_menu_action_topics}`,
+    headers: {
+      Authorization: `Bearer ${config.channelAccessToken}`
+    },
+    json: true
+  })
+
+export const calling = userId =>
+  request({
+    method: 'POST',
+    uri: `https://api.line.me/v2/bot/user/${userId}/richmenu/richmenu-${config.rich_menu_action_calling}`,
+    headers: {
+      Authorization: `Bearer ${config.channelAccessToken}`
+    },
+    json: true
+  })
+
 export const listenChoose = userId =>
   request({
     method: 'POST',

@@ -12,6 +12,26 @@ exports.nextPage = function (userId) {
         json: true
     });
 };
+exports.topic = function (userId) {
+    return request({
+        method: 'POST',
+        uri: "https://api.line.me/v2/bot/user/" + userId + "/richmenu/richmenu-" + config.rich_menu_action_topics,
+        headers: {
+            Authorization: "Bearer " + config.channelAccessToken
+        },
+        json: true
+    });
+};
+exports.calling = function (userId) {
+    return request({
+        method: 'POST',
+        uri: "https://api.line.me/v2/bot/user/" + userId + "/richmenu/richmenu-" + config.rich_menu_action_calling,
+        headers: {
+            Authorization: "Bearer " + config.channelAccessToken
+        },
+        json: true
+    });
+};
 exports.listenChoose = function (userId) {
     return request({
         method: 'POST',
