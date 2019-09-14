@@ -20,19 +20,21 @@ export const intentHandler = async (message, source, replyToken) => {
       return Handler.replyText(replyToken, `เลือกเบอร์ติดต่อเจ้าหน้าที่`)
 
     // Topic
-    // case 'รัฐธรรมนูญปี60':
-    //   return Handler.replyText(replyToken, [
-    //     'สรุปการดีเบต แจ็ก หม่า vs อีลอน มัสก์ ในงานประชุม World AI / โดย ลงทุนแมน ลงทุนแมนรับรองว่าเป็นเรื่องน่าสนใจที่สุดในช่วงนี้ เมื่อไม่กี่ชั่วโมงที่ผ่านมา มีการคุยกัน'
-    //   ])
-    // // return Handler.drawerMenu(userId, replyToken)
-    // case 'โรงไฟฟ้าถ่านหิน':
-    //   return Handler.drawerMenu(userId, replyToken)
-    // case 'เสรีภาพทางเพศ':
-    //   return Handler.drawerMenu(userId, replyToken)
-    // case 'ไมโครพลาสติค':
-    //   return Handler.drawerMenu(userId, replyToken)
-    // case 'การค้าเสรี':
-    //   return Handler.drawerMenu(userId, replyToken)
+    case 'ปัญหาโดนโกง':
+      await Richmenu.sharePage(userId)
+      return Handler.replyText(replyToken, `ปัญหาโดนโกง`)
+    case 'ปํญหาการกู้ยืม':
+      await Richmenu.sharePage(userId)
+      return Handler.replyText(replyToken, `ปํญหาการกู้ยืม`)
+    case 'ปัญหาการประกันตัว':
+      await Richmenu.sharePage(userId)
+      return Handler.replyText(replyToken, `ปัญหาการประกันตัว`)
+    case 'ปัญหาอุบัติเหตุ':
+      await Richmenu.sharePage(userId)
+      return Handler.replyText(replyToken, `ปัญหาอุบัติเหตุ`)
+    case 'ศึกษากฎหมายใหม่':
+      await Richmenu.sharePage(userId)
+      return Handler.replyText(replyToken, `ศึกษากฎหมายใหม่`)
 
     // Drawer
     case 'โหวตเลย':
@@ -66,6 +68,10 @@ export const intentHandler = async (message, source, replyToken) => {
       return await Richmenu.listenAgree(userId)
 
     // Close ,Back or Share action
+    case 'ย้อนกลับไปหน้าหัวข้อ':
+      return await Richmenu.topic(userId)
+    case 'ย้อนกลับไปหน้าเเรก':
+      return await Richmenu.removePage(userId)
     case 'ปิดเมนู':
       return await Richmenu.removePage(userId)
     case 'โหวตเห็นด้วย':
@@ -74,7 +80,7 @@ export const intentHandler = async (message, source, replyToken) => {
       return await Richmenu.sharePage(userId)
     case 'ย้อนกลับไปหน้า drawer':
       return Handler.drawerMenu(userId, replyToken)
-    case 'เเชร์โพล์นี้':
+    case 'เเชร์บทความนี้':
       return Handler.sharePoint(replyToken)
     // return Handler.replyText(replyToken, `Redirect to SHARE pages.`)
     case 'เลือกอ่านหัวข้ออื่น':

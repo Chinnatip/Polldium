@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { parcel } from './upload_action_drawer_guide'
+import { parcel } from './upload_action_share'
 const config = require('../../config.json')
 const program = require('commander')
 const line = require('@line/bot-sdk')

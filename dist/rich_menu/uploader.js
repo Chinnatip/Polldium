@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var upload_action_drawer_guide_1 = require("./upload_action_drawer_guide");
+var upload_action_share_1 = require("./upload_action_share");
 var config = require('../../config.json');
 var program = require('commander');
 var line = require('@line/bot-sdk');
@@ -22,9 +22,9 @@ if (program.deleteAll) {
         }));
     });
 }
-var name = upload_action_drawer_guide_1.parcel.name, chatBarText = upload_action_drawer_guide_1.parcel.chatBarText, imagePath = upload_action_drawer_guide_1.parcel.imagePath, _a = upload_action_drawer_guide_1.parcel.richTemplate, templateWidth = _a.width, templateHeight = _a.height, 
+var name = upload_action_share_1.parcel.name, chatBarText = upload_action_share_1.parcel.chatBarText, imagePath = upload_action_share_1.parcel.imagePath, _a = upload_action_share_1.parcel.richTemplate, templateWidth = _a.width, templateHeight = _a.height, 
 // richGrid: { width, height },
-actions = upload_action_drawer_guide_1.parcel.actions;
+actions = upload_action_share_1.parcel.actions;
 housekeeping
     .then(function () {
     return client.createRichMenu({
