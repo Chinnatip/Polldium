@@ -4,6 +4,7 @@ const client = new line.Client(config)
 import { intentHandler } from './intentHandler'
 import * as Richmenu from '../rich_menu/menu'
 import { shareCard } from '../flex_message/flex_share_card'
+import { flex_calling, flex_calling_lawyer } from '../flex_message/flex_calling'
 
 // simple reply function
 export const replyText = (token, texts) => {
@@ -20,6 +21,33 @@ export const sharePoint = token => {
       'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/Polldium_qr_code.png',
       'เเสกน QR CODE นี้ จากนั้นเเอดเป็นเพื่อนกับน้องรพี เพื่อสอบถามปัญหาด้านกฎหมาย'
     )
+  ])
+}
+
+export const calling = (token, calling_id) => {
+  return client.replyMessage(token, [
+    { type: 'text', text: 'กรุณากดเบอร์โทรเจ้าหน้าที่' },
+    flex_calling(calling_id)
+  ])
+}
+
+export const callingLawyer = token => {
+  return client.replyMessage(token, [
+    {
+      type: 'text',
+      text: 'ระบุที่อยู่ของคุณ',
+      quickReply: {
+        items: [
+          {
+            type: 'action',
+            action: {
+              type: 'location',
+              label: 'Location'
+            }
+          }
+        ]
+      }
+    }
   ])
 }
 
@@ -43,13 +71,26 @@ export const handleAudio = (message, replyToken) => {
 }
 
 export const handleLocation = (message, replyToken) => {
-  console.log('get loc >>>', message)
+  // console.log('get loc >>>', message)
   const { type, id, address, latitude, longitude } = message
-  const compress = [
-    `ตอนนี้คุณอยู่ที่ [${longitude},${latitude}] ${address}`,
-    'call me now'
-  ]
-  return replyText(replyToken, compress)
+  const filterLawyer = {
+    branch: 'จ.กรุงเทพ',
+    branchFull: 'สภาทนายความกรุงเทพฯ',
+    telNumber: '02-522-7124'
+  }
+  return client.replyMessage(replyToken, [
+    {
+      type: 'text',
+      text: `เราตรวจพบว่าที่อยู่ปัจุบันของคุณ อยู่ในเขตการให้บริการของ${filterLawyer.branchFull}`
+    },
+    flex_calling_lawyer(filterLawyer.branch, filterLawyer.telNumber)
+  ])
+
+  // const compress = [
+  //   `ตอนนี้คุณอยู่ที่ [${longitude},${latitude}] ${address}`,
+  //   'call me now'
+  // ]
+  // return replyText(replyToken, compress)
 }
 
 export const handleSticker = (message, replyToken) => {

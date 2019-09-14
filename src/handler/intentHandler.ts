@@ -22,10 +22,13 @@ export const intentHandler = async (message, source, replyToken) => {
     // Calling
     case 'โทรหาสายด่วนกระทรวงยุติธรรม':
       await Richmenu.shareCallingPage(userId)
-      return Handler.replyText(replyToken, `กรุณากดเบอร์โทรเจ้าหน้าที่`)
+      return Handler.calling(replyToken, 1111)
     case 'โทรหาศูนย์ดำรงธรรม':
       await Richmenu.shareCallingPage(userId)
-      return Handler.replyText(replyToken, `กรุณากดเบอร์โทรเจ้าหน้าที่`)
+      return Handler.calling(replyToken, 1567)
+    case 'โทรหาสภาทนายความ':
+      await Richmenu.shareCallingPage(userId)
+      return Handler.callingLawyer(replyToken)
 
     // Topic
     case 'ปัญหาโดนโกง':

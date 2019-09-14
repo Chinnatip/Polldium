@@ -42,6 +42,7 @@ var client = new line.Client(config);
 var intentHandler_1 = require("./intentHandler");
 var Richmenu = require("../rich_menu/menu");
 var flex_share_card_1 = require("../flex_message/flex_share_card");
+var flex_calling_1 = require("../flex_message/flex_calling");
 // simple reply function
 exports.replyText = function (token, texts) {
     texts = Array.isArray(texts) ? texts : [texts];
@@ -50,6 +51,31 @@ exports.replyText = function (token, texts) {
 exports.sharePoint = function (token) {
     return client.replyMessage(token, [
         flex_share_card_1.shareCard('มาเป็นเพื่อนกับน้องรพี', '@258zuvzn', 'http://nav.cx/6xrKRnC', 'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/Polldium_qr_code.png', 'เเสกน QR CODE นี้ จากนั้นเเอดเป็นเพื่อนกับน้องรพี เพื่อสอบถามปัญหาด้านกฎหมาย')
+    ]);
+};
+exports.calling = function (token, calling_id) {
+    return client.replyMessage(token, [
+        { type: 'text', text: 'กรุณากดเบอร์โทรเจ้าหน้าที่' },
+        flex_calling_1.flex_calling(calling_id)
+    ]);
+};
+exports.callingLawyer = function (token) {
+    return client.replyMessage(token, [
+        {
+            type: 'text',
+            text: 'ระบุที่อยู่ของคุณ',
+            quickReply: {
+                items: [
+                    {
+                        type: 'action',
+                        action: {
+                            type: 'location',
+                            label: 'Location'
+                        }
+                    }
+                ]
+            }
+        }
     ]);
 };
 exports.handleText = function (message, source, replyToken) {
@@ -68,13 +94,25 @@ exports.handleAudio = function (message, replyToken) {
     return exports.replyText(replyToken, 'Got Audio');
 };
 exports.handleLocation = function (message, replyToken) {
-    console.log('get loc >>>', message);
+    // console.log('get loc >>>', message)
     var type = message.type, id = message.id, address = message.address, latitude = message.latitude, longitude = message.longitude;
-    var compress = [
-        "\u0E15\u0E2D\u0E19\u0E19\u0E35\u0E49\u0E04\u0E38\u0E13\u0E2D\u0E22\u0E39\u0E48\u0E17\u0E35\u0E48 [" + longitude + "," + latitude + "] " + address,
-        'call me now'
-    ];
-    return exports.replyText(replyToken, compress);
+    var filterLawyer = {
+        branch: 'จ.กรุงเทพ',
+        branchFull: 'สภาทนายความกรุงเทพฯ',
+        telNumber: '02-522-7124'
+    };
+    return client.replyMessage(replyToken, [
+        {
+            type: 'text',
+            text: "\u0E40\u0E23\u0E32\u0E15\u0E23\u0E27\u0E08\u0E1E\u0E1A\u0E27\u0E48\u0E32\u0E17\u0E35\u0E48\u0E2D\u0E22\u0E39\u0E48\u0E1B\u0E31\u0E08\u0E38\u0E1A\u0E31\u0E19\u0E02\u0E2D\u0E07\u0E04\u0E38\u0E13 \u0E2D\u0E22\u0E39\u0E48\u0E43\u0E19\u0E40\u0E02\u0E15\u0E01\u0E32\u0E23\u0E43\u0E2B\u0E49\u0E1A\u0E23\u0E34\u0E01\u0E32\u0E23\u0E02\u0E2D\u0E07" + filterLawyer.branchFull
+        },
+        flex_calling_1.flex_calling_lawyer(filterLawyer.branch, filterLawyer.telNumber)
+    ]);
+    // const compress = [
+    //   `ตอนนี้คุณอยู่ที่ [${longitude},${latitude}] ${address}`,
+    //   'call me now'
+    // ]
+    // return replyText(replyToken, compress)
 };
 exports.handleSticker = function (message, replyToken) {
     console.log('get sticker >>>', message);
