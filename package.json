@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsc -p . && node dist/app",
+    "upload": "tsc -p . && node dist/rich_menu/uploader",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -25,6 +26,10 @@
   "dependencies": {
     "@line/bot-sdk": "^6.2.1",
     "@types/node": "^12.7.5",
-    "express": "^4.16.3"
+    "commander": "^3.0.1",
+    "express": "^4.16.3",
+    "fs": "^0.0.1-security",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
   }
 }

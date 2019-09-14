@@ -7,7 +7,7 @@ export const handleEvent = async event => {
     case 'message':
       switch (message.type) {
         case 'text':
-          return Handler.handleText(message, replyToken)
+          return Handler.handleText(message, source, replyToken)
         case 'image':
           return Handler.handleImage(message, replyToken)
         case 'video':

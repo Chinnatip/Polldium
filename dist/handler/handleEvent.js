@@ -46,7 +46,7 @@ exports.handleEvent = function (event) { return __awaiter(_this, void 0, void 0,
             case 'message':
                 switch (message.type) {
                     case 'text':
-                        return [2 /*return*/, Handler.handleText(message, replyToken)];
+                        return [2 /*return*/, Handler.handleText(message, source, replyToken)];
                     case 'image':
                         return [2 /*return*/, Handler.handleImage(message, replyToken)];
                     case 'video':

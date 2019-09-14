@@ -2,6 +2,7 @@ const line = require('@line/bot-sdk')
 const config = require('../../config.json')
 const client = new line.Client(config)
 import { intentHandler } from './intentHandler'
+import * as Richmenu from '../rich_menu/menu'
 
 // simple reply function
 export const replyText = (token, texts) => {
@@ -9,8 +10,36 @@ export const replyText = (token, texts) => {
   return client.replyMessage(token, texts.map(text => ({ type: 'text', text })))
 }
 
-export const handleText = (message, replyToken) => {
-  return intentHandler(message, replyToken)
+export const sharePoint = token => {
+  return client.replyMessage(token, [
+    {
+      type: 'flex',
+      altText: 'Share_group - flex message',
+      contents: {
+        type: 'bubble',
+        body: {
+          type: 'box',
+          layout: 'vertical',
+          contents: [
+            {
+              type: 'button',
+              style: 'primary',
+              height: 'sm',
+              action: {
+                type: 'uri',
+                label: 'Share Polldium',
+                uri: 'https://line.me/ti/p/~@258zuvzn'
+              }
+            }
+          ]
+        }
+      }
+    }
+  ])
+}
+
+export const handleText = (message, source, replyToken) => {
+  return intentHandler(message, source, replyToken)
 }
 
 export const handleImage = (message, replyToken) => {
@@ -41,4 +70,9 @@ export const handleLocation = (message, replyToken) => {
 export const handleSticker = (message, replyToken) => {
   console.log('get sticker >>>', message)
   return replyText(replyToken, 'Got Sticker')
+}
+
+// Customize action
+export const drawerMenu = async (userId, replyToken) => {
+  return await Richmenu.drawer(userId)
 }
