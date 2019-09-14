@@ -1,5 +1,6 @@
 import * as Handler from './actionHandler'
 import * as Richmenu from '../rich_menu/menu'
+import { elonMuskContent } from '../content/elon_mush'
 
 export const intentHandler = async (message, source, replyToken) => {
   const { userId } = source
@@ -17,7 +18,13 @@ export const intentHandler = async (message, source, replyToken) => {
 
     // Topic
     case 'รัฐธรรมนูญปี60':
-      return Handler.drawerMenu(userId, replyToken)
+      return Handler.replyText(replyToken, [
+        'สรุปการดีเบต แจ็ก หม่า vs อีลอน มัสก์ ในงานประชุม World AI / โดย ลงทุนแมน',
+        'ลงทุนแมนรับรองว่าเป็นเรื่องน่าสนใจที่สุดในช่วงนี้',
+        'เมื่อไม่กี่ชั่วโมงที่ผ่านมา',
+        'มีการคุยกันระหว่างแจ็ก หม่า กับ อีลอน มัสก์'
+      ])
+    // return Handler.drawerMenu(userId, replyToken)
     case 'โรงไฟฟ้าถ่านหิน':
       return Handler.drawerMenu(userId, replyToken)
     case 'เสรีภาพทางเพศ':

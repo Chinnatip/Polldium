@@ -1,4 +1,4 @@
-export const shareCard = (title, lineID, qrCode, endText) => {
+export const shareCard = (title, lineID, linkURL, qrCode, endText) => {
   return {
     type: 'flex',
     altText: 'Flex Message',
@@ -11,7 +11,7 @@ export const shareCard = (title, lineID, qrCode, endText) => {
         contents: [
           {
             type: 'text',
-            text: 'มาเป็นเพื่อนกับน้องรพี',
+            text: title,
             size: 'xl',
             gravity: 'center',
             weight: 'bold',
@@ -37,7 +37,29 @@ export const shareCard = (title, lineID, qrCode, endText) => {
                   },
                   {
                     type: 'text',
-                    text: '@258zuvzn',
+                    text: lineID,
+                    flex: 4,
+                    size: 'sm',
+                    color: '#666666',
+                    wrap: true
+                  }
+                ]
+              },
+              {
+                type: 'box',
+                layout: 'baseline',
+                spacing: 'sm',
+                contents: [
+                  {
+                    type: 'text',
+                    text: 'URL',
+                    flex: 1,
+                    size: 'sm',
+                    color: '#AAAAAA'
+                  },
+                  {
+                    type: 'text',
+                    text: linkURL,
                     flex: 4,
                     size: 'sm',
                     color: '#666666',
@@ -55,15 +77,13 @@ export const shareCard = (title, lineID, qrCode, endText) => {
                   },
                   {
                     type: 'image',
-                    url:
-                      'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/Polldium_qr_code.png',
+                    url: qrCode,
                     size: 'xl',
                     aspectMode: 'cover'
                   },
                   {
                     type: 'text',
-                    text:
-                      'เเสกน QR CODE นี้ จากนั้นเเอดเป็นเพื่อนกับน้องรพี เพื่อสอบถามปัญหาด้านกฎหมาย',
+                    text: endText,
                     margin: 'xxl',
                     size: 'xs',
                     color: '#AAAAAA',

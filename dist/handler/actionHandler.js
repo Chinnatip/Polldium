@@ -49,7 +49,7 @@ exports.replyText = function (token, texts) {
 };
 exports.sharePoint = function (token) {
     return client.replyMessage(token, [
-        flex_share_card_1.shareCard('มาเป็นเพื่อนกับน้องรพี', '@258zuvzn', 'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/Polldium_qr_code.png', 'เเสกน QR CODE นี้ จากนั้นเเอดเป็นเพื่อนกับน้องรพี เพื่อสอบถามปัญหาด้านกฎหมาย')
+        flex_share_card_1.shareCard('มาเป็นเพื่อนกับน้องรพี', '@258zuvzn', 'http://nav.cx/6xrKRnC', 'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/Polldium_qr_code.png', 'เเสกน QR CODE นี้ จากนั้นเเอดเป็นเพื่อนกับน้องรพี เพื่อสอบถามปัญหาด้านกฎหมาย')
     ]);
 };
 exports.handleText = function (message, source, replyToken) {

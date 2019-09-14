@@ -81,7 +81,14 @@ exports.intentHandler = function (message, source, replyToken) { return __awaite
                 return [2 /*return*/, Handler.replyText(replyToken, "\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E42\u0E2B\u0E27\u0E15 \u0E2B\u0E23\u0E37\u0E2D\u0E17\u0E33\u0E04\u0E27\u0E32\u0E21\u0E40\u0E02\u0E49\u0E32\u0E43\u0E08\u0E2B\u0E31\u0E27\u0E02\u0E49\u0E2D\u0E19\u0E35\u0E49 \u0E42\u0E14\u0E22\u0E01\u0E32\u0E23\u0E40\u0E25\u0E37\u0E2D\u0E01 \u0E2D\u0E48\u0E32\u0E19\u0E04\u0E33\u0E43\u0E2B\u0E49\u0E01\u0E32\u0E23")
                     // Topic
                 ];
-            case 4: return [2 /*return*/, Handler.drawerMenu(userId, replyToken)];
+            case 4: return [2 /*return*/, Handler.replyText(replyToken, [
+                    'สรุปการดีเบต แจ็ก หม่า vs อีลอน มัสก์ ในงานประชุม World AI / โดย ลงทุนแมน',
+                    'ลงทุนแมนรับรองว่าเป็นเรื่องน่าสนใจที่สุดในช่วงนี้',
+                    'เมื่อไม่กี่ชั่วโมงที่ผ่านมา',
+                    'มีการคุยกันระหว่างแจ็ก หม่า กับ อีลอน มัสก์'
+                ])
+                // return Handler.drawerMenu(userId, replyToken)
+            ];
             case 5: return [2 /*return*/, Handler.drawerMenu(userId, replyToken)];
             case 6: return [2 /*return*/, Handler.drawerMenu(userId, replyToken)];
             case 7: return [2 /*return*/, Handler.drawerMenu(userId, replyToken)];

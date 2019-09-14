@@ -16,6 +16,7 @@ export const sharePoint = token => {
     shareCard(
       'มาเป็นเพื่อนกับน้องรพี',
       '@258zuvzn',
+      'http://nav.cx/6xrKRnC',
       'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/Polldium_qr_code.png',
       'เเสกน QR CODE นี้ จากนั้นเเอดเป็นเพื่อนกับน้องรพี เพื่อสอบถามปัญหาด้านกฎหมาย'
     )
