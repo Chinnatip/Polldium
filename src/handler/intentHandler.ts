@@ -1,6 +1,11 @@
 import * as Handler from './actionHandler'
 import * as Richmenu from '../rich_menu/menu'
-import { elonMuskContent } from '../content/elon_mush'
+import * as Accident from '../content/accident'
+import * as BailOut from '../content/bail_out'
+import * as CheatLand from '../content/cheat_land'
+import * as CheatMoney from '../content/cheat_money'
+import * as MortgageHowTo from '../content/mortgage_owner_how_to'
+import * as MortgageTrick from '../content/mortgage_owner_trick'
 
 export const intentHandler = async (message, source, replyToken) => {
   const { userId } = source
@@ -33,19 +38,37 @@ export const intentHandler = async (message, source, replyToken) => {
     // Topic
     case 'ปัญหาโดนโกง':
       await Richmenu.sharePage(userId)
-      return Handler.replyText(replyToken, `ปัญหาโดนโกง`)
+      return Handler.fraudChoice(replyToken)
     case 'ปํญหาการกู้ยืม':
       await Richmenu.sharePage(userId)
-      return Handler.replyText(replyToken, `ปํญหาการกู้ยืม`)
+      return Handler.mortgageChoice(replyToken)
     case 'ปัญหาการประกันตัว':
       await Richmenu.sharePage(userId)
-      return Handler.replyText(replyToken, `ปัญหาการประกันตัว`)
+      return Handler.replyText(replyToken, BailOut.content)
     case 'ปัญหาอุบัติเหตุ':
       await Richmenu.sharePage(userId)
-      return Handler.replyText(replyToken, `ปัญหาอุบัติเหตุ`)
+      return Handler.accidentChoice(replyToken)
     case 'ศึกษากฎหมายใหม่':
       await Richmenu.sharePage(userId)
-      return Handler.replyText(replyToken, `ศึกษากฎหมายใหม่`)
+      return Handler.replyText(replyToken, ['1', '2', '3'])
+
+    // Reader
+    case 'โกงเงิน':
+      return Handler.replyText(replyToken, CheatMoney.content)
+    case 'โกงที่ดิน':
+      return Handler.replyText(replyToken, CheatLand.content)
+    case 'ทวงหนี้ยังไงดี':
+      return Handler.replyText(replyToken, MortgageHowTo.content)
+    case 'ทวงหนี้ยังไงไม่ติดคุก':
+      return Handler.replyText(replyToken, MortgageTrick.content)
+    case 'ติดหนี้':
+      return Handler.replyText(replyToken, ['1', '2', '3'])
+    case 'ติดหนี้แบบอื่นๆ':
+      return Handler.replyText(replyToken, ['1', '2', '3'])
+    case 'ประกันภัย':
+      return Handler.replyText(replyToken, Accident.insurance)
+    case 'ค่าเสียหาย':
+      return Handler.replyText(replyToken, Accident.fee)
 
     // Drawer
     case 'โหวตเลย':

@@ -5,6 +5,9 @@ import { intentHandler } from './intentHandler'
 import * as Richmenu from '../rich_menu/menu'
 import { shareCard } from '../flex_message/flex_share_card'
 import { flex_calling, flex_calling_lawyer } from '../flex_message/flex_calling'
+import * as Card from '../flex_message/carousel_card'
+
+import * as Cheat from '../content/cheat'
 
 // simple reply function
 export const replyText = (token, texts) => {
@@ -23,7 +26,95 @@ export const sharePoint = token => {
     )
   ])
 }
-
+// Choice card
+export const fraudChoice = token => {
+  return client.replyMessage(token, [
+    ...Cheat.content.map(item => {
+      return { type: 'text', text: item }
+    }),
+    { type: 'text', text: 'กรุณาเลือกข้อมูลที่สนใจ' },
+    Card.carousel('fraud choice', [
+      {
+        title: 'โดนโกงทำอย่างไรดี ?',
+        desc: 'เลือกปัญหาที่โดนโกง',
+        imgUrl:
+          'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/Polldium_qr_code.png',
+        actions: [
+          {
+            label: 'โกงเงิน',
+            text: 'โกงเงิน'
+          },
+          {
+            label: 'โกงที่ดิน',
+            text: 'โกงที่ดิน'
+          }
+        ]
+      }
+    ])
+  ])
+}
+export const mortgageChoice = token => {
+  return client.replyMessage(token, [
+    { type: 'text', text: 'คุณเป็นเจ้าหนี้หรือลูกหนี้ ?' },
+    Card.carousel('mortgage choice', [
+      {
+        title: 'เป็นเจ้าหนี้',
+        desc: 'เลือกปัญหาที่เจอ',
+        imgUrl:
+          'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/Polldium_qr_code.png',
+        actions: [
+          {
+            label: 'ทวงหนี้ยังไงดี',
+            text: 'ทวงหนี้ไม่ได้ทำยังไงดี ?'
+          },
+          {
+            label: 'ทวงหนี้ยังไงไม่ติดคุก',
+            text: 'ทวงหนี้ยังไงไม่ให้ติดคุก ?'
+          }
+        ]
+      },
+      {
+        title: 'เป็นลูกหนี้',
+        desc: 'เลือกปัญหาที่เจอ',
+        imgUrl:
+          'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/Polldium_qr_code.png',
+        actions: [
+          {
+            label: 'ติดหนี้',
+            text: 'ติดหนี้'
+          },
+          {
+            label: 'ติดหนี้แบบอื่นๆ',
+            text: 'อื่นๆ'
+          }
+        ]
+      }
+    ])
+  ])
+}
+export const accidentChoice = token => {
+  return client.replyMessage(token, [
+    { type: 'text', text: 'อยากให้ช่วยเหลือด้านใดครับ ?' },
+    Card.carousel('mortgage choice', [
+      {
+        title: 'หัวข้อที่มี',
+        desc: 'เลือกปัญหาที่เจอ',
+        imgUrl:
+          'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/Polldium_qr_code.png',
+        actions: [
+          {
+            label: 'ประกันภัย',
+            text: 'ประกันภัย'
+          },
+          {
+            label: 'ค่าเสียหาย',
+            text: 'ค่าเสียหาย'
+          }
+        ]
+      }
+    ])
+  ])
+}
 export const calling = (token, calling_id) => {
   return client.replyMessage(token, [
     { type: 'text', text: 'กรุณากดเบอร์โทรเจ้าหน้าที่' },

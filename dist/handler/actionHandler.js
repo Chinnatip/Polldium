@@ -43,6 +43,8 @@ var intentHandler_1 = require("./intentHandler");
 var Richmenu = require("../rich_menu/menu");
 var flex_share_card_1 = require("../flex_message/flex_share_card");
 var flex_calling_1 = require("../flex_message/flex_calling");
+var Card = require("../flex_message/carousel_card");
+var Cheat = require("../content/cheat");
 // simple reply function
 exports.replyText = function (token, texts) {
     texts = Array.isArray(texts) ? texts : [texts];
@@ -51,6 +53,90 @@ exports.replyText = function (token, texts) {
 exports.sharePoint = function (token) {
     return client.replyMessage(token, [
         flex_share_card_1.shareCard('มาเป็นเพื่อนกับน้องรพี', '@258zuvzn', 'http://nav.cx/6xrKRnC', 'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/Polldium_qr_code.png', 'เเสกน QR CODE นี้ จากนั้นเเอดเป็นเพื่อนกับน้องรพี เพื่อสอบถามปัญหาด้านกฎหมาย')
+    ]);
+};
+// Choice card
+exports.fraudChoice = function (token) {
+    return client.replyMessage(token, Cheat.content.map(function (item) {
+        return { type: 'text', text: item };
+    }).concat([
+        { type: 'text', text: 'กรุณาเลือกข้อมูลที่สนใจ' },
+        Card.carousel('fraud choice', [
+            {
+                title: 'โดนโกงทำอย่างไรดี ?',
+                desc: 'เลือกปัญหาที่โดนโกง',
+                imgUrl: 'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/Polldium_qr_code.png',
+                actions: [
+                    {
+                        label: 'โกงเงิน',
+                        text: 'โกงเงิน'
+                    },
+                    {
+                        label: 'โกงที่ดิน',
+                        text: 'โกงที่ดิน'
+                    }
+                ]
+            }
+        ])
+    ]));
+};
+exports.mortgageChoice = function (token) {
+    return client.replyMessage(token, [
+        { type: 'text', text: 'คุณเป็นเจ้าหนี้หรือลูกหนี้ ?' },
+        Card.carousel('mortgage choice', [
+            {
+                title: 'เป็นเจ้าหนี้',
+                desc: 'เลือกปัญหาที่เจอ',
+                imgUrl: 'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/Polldium_qr_code.png',
+                actions: [
+                    {
+                        label: 'ทวงหนี้ยังไงดี',
+                        text: 'ทวงหนี้ไม่ได้ทำยังไงดี ?'
+                    },
+                    {
+                        label: 'ทวงหนี้ยังไงไม่ติดคุก',
+                        text: 'ทวงหนี้ยังไงไม่ให้ติดคุก ?'
+                    }
+                ]
+            },
+            {
+                title: 'เป็นลูกหนี้',
+                desc: 'เลือกปัญหาที่เจอ',
+                imgUrl: 'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/Polldium_qr_code.png',
+                actions: [
+                    {
+                        label: 'ติดหนี้',
+                        text: 'ติดหนี้'
+                    },
+                    {
+                        label: 'ติดหนี้แบบอื่นๆ',
+                        text: 'อื่นๆ'
+                    }
+                ]
+            }
+        ])
+    ]);
+};
+exports.accidentChoice = function (token) {
+    return client.replyMessage(token, [
+        { type: 'text', text: 'อยากให้ช่วยเหลือด้านใดครับ ?' },
+        Card.carousel('mortgage choice', [
+            {
+                title: 'หัวข้อที่มี',
+                desc: 'เลือกปัญหาที่เจอ',
+                imgUrl: 'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/Polldium_qr_code.png',
+                actions: [
+                    {
+                        label: 'ประกันภัย',
+                        text: 'ประกันภัย'
+                    },
+                    {
+                        label: 'ค่าเสียหาย',
+                        text: 'ค่าเสียหาย'
+                    }
+                ]
+            }
+        ])
     ]);
 };
 exports.calling = function (token, calling_id) {
