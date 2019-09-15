@@ -44,7 +44,7 @@ export const intentHandler = async (message, source, replyToken) => {
       return Handler.mortgageChoice(replyToken)
     case 'ปัญหาการประกันตัว':
       await Richmenu.sharePage(userId)
-      return Handler.replyText(replyToken, BailOut.content)
+      return Handler.bailChoice(replyToken)
     case 'ปัญหาอุบัติเหตุ':
       await Richmenu.sharePage(userId)
       return Handler.accidentChoice(replyToken)
@@ -68,6 +68,10 @@ export const intentHandler = async (message, source, replyToken) => {
     case 'ประกันภัย':
       return Handler.replyText(replyToken, Accident.insurance)
     case 'ค่าเสียหาย':
+      return Handler.replyText(replyToken, Accident.fee)
+    case 'การประกันตัวทำอย่างไร':
+      return Handler.replyText(replyToken, Accident.insurance)
+    case 'ไม่มีเงินประกันตัวทำอย่างไร':
       return Handler.replyText(replyToken, Accident.fee)
 
     // Drawer

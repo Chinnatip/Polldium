@@ -38,7 +38,7 @@ export const fraudChoice = token => {
         title: 'โดนโกงทำอย่างไรดี ?',
         desc: 'เลือกปัญหาที่โดนโกง',
         imgUrl:
-          'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/Polldium_qr_code.png',
+          'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/cheat_bg.png',
         actions: [
           {
             label: 'โกงเงิน',
@@ -53,6 +53,32 @@ export const fraudChoice = token => {
     ])
   ])
 }
+export const bailChoice = token => {
+  return client.replyMessage(token, [
+    ...Cheat.content.map(item => {
+      return { type: 'text', text: item }
+    }),
+    { type: 'text', text: 'กรุณาเลือกข้อมูลที่สนใจ' },
+    Card.carousel('bail choice', [
+      {
+        title: 'โดนโกงทำอย่างไรดี ?',
+        desc: 'เลือกปัญหาที่โดนโกง',
+        imgUrl:
+          'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/bail_bg.png',
+        actions: [
+          {
+            label: 'การประกันตัวทำอย่างไร',
+            text: 'การประกันตัว ทำยังไง?'
+          },
+          {
+            label: 'ไม่มีเงินประกันตัวทำอย่างไร',
+            text: 'ไม่มีเงินประกันตัว ทำยังไง?'
+          }
+        ]
+      }
+    ])
+  ])
+}
 export const mortgageChoice = token => {
   return client.replyMessage(token, [
     { type: 'text', text: 'คุณเป็นเจ้าหนี้หรือลูกหนี้ ?' },
@@ -61,7 +87,7 @@ export const mortgageChoice = token => {
         title: 'เป็นเจ้าหนี้',
         desc: 'เลือกปัญหาที่เจอ',
         imgUrl:
-          'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/Polldium_qr_code.png',
+          'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/creditor_bg.png',
         actions: [
           {
             label: 'ทวงหนี้ยังไงดี',
@@ -77,7 +103,7 @@ export const mortgageChoice = token => {
         title: 'เป็นลูกหนี้',
         desc: 'เลือกปัญหาที่เจอ',
         imgUrl:
-          'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/Polldium_qr_code.png',
+          'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/payee_bg.png',
         actions: [
           {
             label: 'ติดหนี้',
@@ -100,7 +126,7 @@ export const accidentChoice = token => {
         title: 'หัวข้อที่มี',
         desc: 'เลือกปัญหาที่เจอ',
         imgUrl:
-          'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/Polldium_qr_code.png',
+          'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/accident_bg.png',
         actions: [
           {
             label: 'ประกันภัย',
