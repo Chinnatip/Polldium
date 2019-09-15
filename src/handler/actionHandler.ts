@@ -61,7 +61,7 @@ export const bailChoice = token => {
     { type: 'text', text: 'กรุณาเลือกข้อมูลที่สนใจ' },
     Card.carousel('bail choice', [
       {
-        title: 'โดนโกงทำอย่างไรดี ?',
+        title: 'ต้องการประกันตัวทำอย่างไร ?',
         desc: 'เลือกปัญหาที่โดนโกง',
         imgUrl:
           'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/bail_bg.png',

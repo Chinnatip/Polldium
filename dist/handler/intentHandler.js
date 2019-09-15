@@ -39,7 +39,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var Handler = require("./actionHandler");
 var Richmenu = require("../rich_menu/menu");
 var Accident = require("../content/accident");
-var BailOut = require("../content/bail_out");
 var CheatLand = require("../content/cheat_land");
 var CheatMoney = require("../content/cheat_money");
 var MortgageHowTo = require("../content/mortgage_owner_how_to");
@@ -71,29 +70,31 @@ exports.intentHandler = function (message, source, replyToken) { return __awaite
                     case 'ติดหนี้แบบอื่นๆ': return [3 /*break*/, 27];
                     case 'ประกันภัย': return [3 /*break*/, 28];
                     case 'ค่าเสียหาย': return [3 /*break*/, 29];
-                    case 'โหวตเลย': return [3 /*break*/, 30];
-                    case 'อ่านคำให้การ': return [3 /*break*/, 32];
-                    case 'เขียนคำให้การ': return [3 /*break*/, 34];
-                    case 'อ่านความเห็นฝ่ายที่เห็นด้วย': return [3 /*break*/, 36];
-                    case 'อ่านความเห็นฝ่ายที่ไม่เห็นด้วย': return [3 /*break*/, 38];
-                    case 'ภาพรวมของเนื้อหา': return [3 /*break*/, 40];
-                    case 'ข้อมูลหลักฐานที่เกี่ยวข้อง': return [3 /*break*/, 42];
-                    case 'เสียงของคนที่เห็นด้วย': return [3 /*break*/, 44];
-                    case 'ย้อนกลับไปหน้า ความคิดเห็น': return [3 /*break*/, 46];
-                    case 'อ่านต่อ': return [3 /*break*/, 48];
-                    case 'ย้อนกลับไปอ่านข้ออื่น': return [3 /*break*/, 50];
-                    case 'ย้อนกลับไปหน้าหัวข้อ': return [3 /*break*/, 52];
-                    case 'ย้อนกลับไปหน้าแรก': return [3 /*break*/, 54];
-                    case 'ย้อนกลับไปหน้าเเรก': return [3 /*break*/, 56];
-                    case 'ปิดเมนู': return [3 /*break*/, 58];
-                    case 'โหวตเห็นด้วย': return [3 /*break*/, 60];
-                    case 'โหวตไม่เห็นด้วย': return [3 /*break*/, 62];
-                    case 'ย้อนกลับไปหน้า drawer': return [3 /*break*/, 64];
-                    case 'เเชร์บทความนี้': return [3 /*break*/, 65];
-                    case 'เเชร์น้องรพี': return [3 /*break*/, 66];
-                    case 'เลือกอ่านหัวข้ออื่น': return [3 /*break*/, 67];
+                    case 'การประกันตัวทำอย่างไร': return [3 /*break*/, 30];
+                    case 'ไม่มีเงินประกันตัวทำอย่างไร': return [3 /*break*/, 31];
+                    case 'โหวตเลย': return [3 /*break*/, 32];
+                    case 'อ่านคำให้การ': return [3 /*break*/, 34];
+                    case 'เขียนคำให้การ': return [3 /*break*/, 36];
+                    case 'อ่านความเห็นฝ่ายที่เห็นด้วย': return [3 /*break*/, 38];
+                    case 'อ่านความเห็นฝ่ายที่ไม่เห็นด้วย': return [3 /*break*/, 40];
+                    case 'ภาพรวมของเนื้อหา': return [3 /*break*/, 42];
+                    case 'ข้อมูลหลักฐานที่เกี่ยวข้อง': return [3 /*break*/, 44];
+                    case 'เสียงของคนที่เห็นด้วย': return [3 /*break*/, 46];
+                    case 'ย้อนกลับไปหน้า ความคิดเห็น': return [3 /*break*/, 48];
+                    case 'อ่านต่อ': return [3 /*break*/, 50];
+                    case 'ย้อนกลับไปอ่านข้ออื่น': return [3 /*break*/, 52];
+                    case 'ย้อนกลับไปหน้าหัวข้อ': return [3 /*break*/, 54];
+                    case 'ย้อนกลับไปหน้าแรก': return [3 /*break*/, 56];
+                    case 'ย้อนกลับไปหน้าเเรก': return [3 /*break*/, 58];
+                    case 'ปิดเมนู': return [3 /*break*/, 60];
+                    case 'โหวตเห็นด้วย': return [3 /*break*/, 62];
+                    case 'โหวตไม่เห็นด้วย': return [3 /*break*/, 64];
+                    case 'ย้อนกลับไปหน้า drawer': return [3 /*break*/, 66];
+                    case 'เเชร์บทความนี้': return [3 /*break*/, 67];
+                    case 'เเชร์น้องรพี': return [3 /*break*/, 68];
+                    case 'เลือกอ่านหัวข้ออื่น': return [3 /*break*/, 69];
                 }
-                return [3 /*break*/, 69];
+                return [3 /*break*/, 71];
             case 1: return [2 /*return*/, Handler.replyText(replyToken, "\u0E1E\u0E34\u0E21\u0E1E\u0E4C\u0E2D\u0E30\u0E44\u0E23\u0E21\u0E32\u0E2B\u0E19\u0E48\u0E2D\u0E22\u0E0B\u0E35\u0E48 ~~~")
                 // Opening action
             ];
@@ -132,7 +133,7 @@ exports.intentHandler = function (message, source, replyToken) { return __awaite
             case 16: return [4 /*yield*/, Richmenu.sharePage(userId)];
             case 17:
                 _b.sent();
-                return [2 /*return*/, Handler.replyText(replyToken, BailOut.content)];
+                return [2 /*return*/, Handler.bailChoice(replyToken)];
             case 18: return [4 /*yield*/, Richmenu.sharePage(userId)];
             case 19:
                 _b.sent();
@@ -150,73 +151,75 @@ exports.intentHandler = function (message, source, replyToken) { return __awaite
             case 26: return [2 /*return*/, Handler.replyText(replyToken, ['1', '2', '3'])];
             case 27: return [2 /*return*/, Handler.replyText(replyToken, ['1', '2', '3'])];
             case 28: return [2 /*return*/, Handler.replyText(replyToken, Accident.insurance)];
-            case 29: return [2 /*return*/, Handler.replyText(replyToken, Accident.fee)
+            case 29: return [2 /*return*/, Handler.replyText(replyToken, Accident.fee)];
+            case 30: return [2 /*return*/, Handler.replyText(replyToken, Accident.insurance)];
+            case 31: return [2 /*return*/, Handler.replyText(replyToken, Accident.fee)
                 // Drawer
             ];
-            case 30: return [4 /*yield*/, Richmenu.votePage(userId)];
-            case 31:
+            case 32: return [4 /*yield*/, Richmenu.votePage(userId)];
+            case 33:
                 _b.sent();
                 return [2 /*return*/, Handler.replyText(replyToken, "OK")];
-            case 32: return [4 /*yield*/, Richmenu.listenChoose(userId)];
-            case 33: return [2 /*return*/, _b.sent()];
-            case 34: return [4 /*yield*/, Richmenu.removePage(userId)
+            case 34: return [4 /*yield*/, Richmenu.listenChoose(userId)];
+            case 35: return [2 /*return*/, _b.sent()];
+            case 36: return [4 /*yield*/, Richmenu.removePage(userId)
                 // Listen choose
             ];
-            case 35: return [2 /*return*/, _b.sent()
+            case 37: return [2 /*return*/, _b.sent()
                 // Listen choose
             ];
-            case 36: return [4 /*yield*/, Richmenu.listenAgree(userId)];
-            case 37: return [2 /*return*/, _b.sent()];
-            case 38: return [4 /*yield*/, Richmenu.listenAgree(userId)
+            case 38: return [4 /*yield*/, Richmenu.listenAgree(userId)];
+            case 39: return [2 /*return*/, _b.sent()];
+            case 40: return [4 /*yield*/, Richmenu.listenAgree(userId)
                 // Listen agree
             ];
-            case 39: return [2 /*return*/, _b.sent()
+            case 41: return [2 /*return*/, _b.sent()
                 // Listen agree
             ];
-            case 40: return [4 /*yield*/, Richmenu.readMore(userId)];
-            case 41: return [2 /*return*/, _b.sent()];
             case 42: return [4 /*yield*/, Richmenu.readMore(userId)];
             case 43: return [2 /*return*/, _b.sent()];
             case 44: return [4 /*yield*/, Richmenu.readMore(userId)];
             case 45: return [2 /*return*/, _b.sent()];
-            case 46: return [4 /*yield*/, Richmenu.listenChoose(userId)
+            case 46: return [4 /*yield*/, Richmenu.readMore(userId)];
+            case 47: return [2 /*return*/, _b.sent()];
+            case 48: return [4 /*yield*/, Richmenu.listenChoose(userId)
                 // Read more
             ];
-            case 47: return [2 /*return*/, _b.sent()
+            case 49: return [2 /*return*/, _b.sent()
                 // Read more
             ];
-            case 48: return [4 /*yield*/, Richmenu.back(userId)];
-            case 49: return [2 /*return*/, _b.sent()];
-            case 50: return [4 /*yield*/, Richmenu.listenAgree(userId)
+            case 50: return [4 /*yield*/, Richmenu.back(userId)];
+            case 51: return [2 /*return*/, _b.sent()];
+            case 52: return [4 /*yield*/, Richmenu.listenAgree(userId)
                 // Close ,Back or Share action
             ];
-            case 51: return [2 /*return*/, _b.sent()
+            case 53: return [2 /*return*/, _b.sent()
                 // Close ,Back or Share action
             ];
-            case 52: return [4 /*yield*/, Richmenu.topic(userId)];
-            case 53: return [2 /*return*/, _b.sent()];
-            case 54: return [4 /*yield*/, Richmenu.removePage(userId)];
+            case 54: return [4 /*yield*/, Richmenu.topic(userId)];
             case 55: return [2 /*return*/, _b.sent()];
             case 56: return [4 /*yield*/, Richmenu.removePage(userId)];
             case 57: return [2 /*return*/, _b.sent()];
             case 58: return [4 /*yield*/, Richmenu.removePage(userId)];
             case 59: return [2 /*return*/, _b.sent()];
-            case 60: return [4 /*yield*/, Richmenu.sharePage(userId)];
+            case 60: return [4 /*yield*/, Richmenu.removePage(userId)];
             case 61: return [2 /*return*/, _b.sent()];
             case 62: return [4 /*yield*/, Richmenu.sharePage(userId)];
             case 63: return [2 /*return*/, _b.sent()];
-            case 64: return [2 /*return*/, Handler.drawerMenu(userId, replyToken)];
-            case 65: return [2 /*return*/, Handler.sharePoint(replyToken)];
-            case 66: return [2 /*return*/, Handler.sharePoint(replyToken)
+            case 64: return [4 /*yield*/, Richmenu.sharePage(userId)];
+            case 65: return [2 /*return*/, _b.sent()];
+            case 66: return [2 /*return*/, Handler.drawerMenu(userId, replyToken)];
+            case 67: return [2 /*return*/, Handler.sharePoint(replyToken)];
+            case 68: return [2 /*return*/, Handler.sharePoint(replyToken)
                 // return Handler.replyText(replyToken, `Redirect to SHARE pages.`)
             ];
-            case 67: return [4 /*yield*/, Richmenu.nextPage(userId)];
-            case 68:
+            case 69: return [4 /*yield*/, Richmenu.nextPage(userId)];
+            case 70:
                 _b.sent();
                 return [2 /*return*/, Handler.replyText(replyToken, "\u0E40\u0E25\u0E37\u0E2D\u0E01\u0E42\u0E2B\u0E27\u0E15 \u0E2B\u0E23\u0E37\u0E2D\u0E17\u0E33\u0E04\u0E27\u0E32\u0E21\u0E40\u0E02\u0E49\u0E32\u0E43\u0E08\u0E2B\u0E31\u0E27\u0E02\u0E49\u0E2D\u0E19\u0E35\u0E49 \u0E42\u0E14\u0E22\u0E01\u0E32\u0E23\u0E40\u0E25\u0E37\u0E2D\u0E01 \u0E2D\u0E48\u0E32\u0E19\u0E04\u0E33\u0E43\u0E2B\u0E49\u0E01\u0E32\u0E23")
                     //
                 ];
-            case 69: return [2 /*return*/, Handler.replyText(replyToken, "ECHO::" + message.text)];
+            case 71: return [2 /*return*/, Handler.replyText(replyToken, "ECHO::" + message.text)];
         }
     });
 }); };

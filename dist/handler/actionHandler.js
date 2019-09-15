@@ -65,7 +65,7 @@ exports.fraudChoice = function (token) {
             {
                 title: 'โดนโกงทำอย่างไรดี ?',
                 desc: 'เลือกปัญหาที่โดนโกง',
-                imgUrl: 'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/Polldium_qr_code.png',
+                imgUrl: 'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/cheat_bg.png',
                 actions: [
                     {
                         label: 'โกงเงิน',
@@ -80,6 +80,30 @@ exports.fraudChoice = function (token) {
         ])
     ]));
 };
+exports.bailChoice = function (token) {
+    return client.replyMessage(token, Cheat.content.map(function (item) {
+        return { type: 'text', text: item };
+    }).concat([
+        { type: 'text', text: 'กรุณาเลือกข้อมูลที่สนใจ' },
+        Card.carousel('bail choice', [
+            {
+                title: 'ต้องการประกันตัวทำอย่างไร ?',
+                desc: 'เลือกปัญหาที่โดนโกง',
+                imgUrl: 'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/bail_bg.png',
+                actions: [
+                    {
+                        label: 'การประกันตัวทำอย่างไร',
+                        text: 'การประกันตัว ทำยังไง?'
+                    },
+                    {
+                        label: 'ไม่มีเงินประกันตัวทำอย่างไร',
+                        text: 'ไม่มีเงินประกันตัว ทำยังไง?'
+                    }
+                ]
+            }
+        ])
+    ]));
+};
 exports.mortgageChoice = function (token) {
     return client.replyMessage(token, [
         { type: 'text', text: 'คุณเป็นเจ้าหนี้หรือลูกหนี้ ?' },
@@ -87,7 +111,7 @@ exports.mortgageChoice = function (token) {
             {
                 title: 'เป็นเจ้าหนี้',
                 desc: 'เลือกปัญหาที่เจอ',
-                imgUrl: 'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/Polldium_qr_code.png',
+                imgUrl: 'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/creditor_bg.png',
                 actions: [
                     {
                         label: 'ทวงหนี้ยังไงดี',
@@ -102,7 +126,7 @@ exports.mortgageChoice = function (token) {
             {
                 title: 'เป็นลูกหนี้',
                 desc: 'เลือกปัญหาที่เจอ',
-                imgUrl: 'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/Polldium_qr_code.png',
+                imgUrl: 'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/payee_bg.png',
                 actions: [
                     {
                         label: 'ติดหนี้',
@@ -124,7 +148,7 @@ exports.accidentChoice = function (token) {
             {
                 title: 'หัวข้อที่มี',
                 desc: 'เลือกปัญหาที่เจอ',
-                imgUrl: 'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/Polldium_qr_code.png',
+                imgUrl: 'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/accident_bg.png',
                 actions: [
                     {
                         label: 'ประกันภัย',
