@@ -39,6 +39,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var Handler = require("./actionHandler");
 var Richmenu = require("../rich_menu/menu");
 var Accident = require("../content/accident");
+var BailOut = require("../content/bail_out");
 var CheatLand = require("../content/cheat_land");
 var CheatMoney = require("../content/cheat_money");
 var MortgageHowTo = require("../content/mortgage_owner_how_to");
@@ -64,14 +65,14 @@ exports.intentHandler = function (message, source, replyToken) { return __awaite
                     case 'ศึกษากฎหมายใหม่': return [3 /*break*/, 20];
                     case 'โกงเงิน': return [3 /*break*/, 22];
                     case 'โกงที่ดิน': return [3 /*break*/, 23];
-                    case 'ทวงหนี้ยังไงดี': return [3 /*break*/, 24];
-                    case 'ทวงหนี้ยังไงไม่ติดคุก': return [3 /*break*/, 25];
+                    case 'ทวงหนี้ไม่ได้ทำยังไงดี ?': return [3 /*break*/, 24];
+                    case 'ทวงหนี้ยังไงไม่ให้ติดคุก ?': return [3 /*break*/, 25];
                     case 'ติดหนี้': return [3 /*break*/, 26];
-                    case 'ติดหนี้แบบอื่นๆ': return [3 /*break*/, 27];
+                    case 'อื่นๆ': return [3 /*break*/, 27];
                     case 'ประกันภัย': return [3 /*break*/, 28];
                     case 'ค่าเสียหาย': return [3 /*break*/, 29];
-                    case 'การประกันตัวทำอย่างไร': return [3 /*break*/, 30];
-                    case 'ไม่มีเงินประกันตัวทำอย่างไร': return [3 /*break*/, 31];
+                    case 'วิธีการประกันตัว': return [3 /*break*/, 30];
+                    case 'ไม่มีเงินประกันตัว': return [3 /*break*/, 31];
                     case 'โหวตเลย': return [3 /*break*/, 32];
                     case 'อ่านคำให้การ': return [3 /*break*/, 34];
                     case 'เขียนคำให้การ': return [3 /*break*/, 36];
@@ -141,19 +142,35 @@ exports.intentHandler = function (message, source, replyToken) { return __awaite
             case 20: return [4 /*yield*/, Richmenu.sharePage(userId)];
             case 21:
                 _b.sent();
-                return [2 /*return*/, Handler.replyText(replyToken, ['1', '2', '3'])
+                return [2 /*return*/, Handler.replyText(replyToken, ['ข้อมุบลกฎหมายใหม่'])
                     // Reader
                 ];
-            case 22: return [2 /*return*/, Handler.replyText(replyToken, CheatMoney.content)];
-            case 23: return [2 /*return*/, Handler.replyText(replyToken, CheatLand.content)];
-            case 24: return [2 /*return*/, Handler.replyText(replyToken, MortgageHowTo.content)];
+            case 22: 
+            // return Handler.replyText(replyToken, CheatMoney.content)
+            return [2 /*return*/, Handler.responseDialog(replyToken, CheatMoney.content.map(function (text) {
+                    return { type: 'text', text: text };
+                }))];
+            case 23: 
+            // return Handler.replyText(replyToken, CheatLand.content)
+            return [2 /*return*/, Handler.responseDialog(replyToken, CheatLand.content.map(function (text) {
+                    return { type: 'text', text: text };
+                }))];
+            case 24: return [2 /*return*/, Handler.responseDialog(replyToken, MortgageHowTo.content)];
             case 25: return [2 /*return*/, Handler.replyText(replyToken, MortgageTrick.content)];
-            case 26: return [2 /*return*/, Handler.replyText(replyToken, ['1', '2', '3'])];
-            case 27: return [2 /*return*/, Handler.replyText(replyToken, ['1', '2', '3'])];
-            case 28: return [2 /*return*/, Handler.replyText(replyToken, Accident.insurance)];
-            case 29: return [2 /*return*/, Handler.replyText(replyToken, Accident.fee)];
-            case 30: return [2 /*return*/, Handler.replyText(replyToken, Accident.insurance)];
-            case 31: return [2 /*return*/, Handler.replyText(replyToken, Accident.fee)
+            case 26: return [2 /*return*/, Handler.responseDialog(replyToken, MortgageHowTo.payee)];
+            case 27: return [2 /*return*/, Handler.responseDialog(replyToken, MortgageHowTo.payee)];
+            case 28: return [2 /*return*/, Handler.responseDialog(replyToken, Accident.insurance.map(function (text) {
+                    return { type: 'text', text: text };
+                }))];
+            case 29: return [2 /*return*/, Handler.responseDialog(replyToken, Accident.fee.map(function (text) {
+                    return { type: 'text', text: text };
+                }))];
+            case 30: return [2 /*return*/, Handler.responseDialog(replyToken, [
+                    { type: 'image', url: BailOut.trick }
+                ])];
+            case 31: return [2 /*return*/, Handler.responseDialog(replyToken, [
+                    { type: 'image', url: BailOut.noMoney }
+                ])
                 // Drawer
             ];
             case 32: return [4 /*yield*/, Richmenu.votePage(userId)];

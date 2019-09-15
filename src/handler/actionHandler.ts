@@ -6,13 +6,53 @@ import * as Richmenu from '../rich_menu/menu'
 import { shareCard } from '../flex_message/flex_share_card'
 import { flex_calling, flex_calling_lawyer } from '../flex_message/flex_calling'
 import * as Card from '../flex_message/carousel_card'
-
 import * as Cheat from '../content/cheat'
+import { text } from 'body-parser'
+
+const textLit = text => {
+  return {
+    type: 'text',
+    text
+  }
+}
+const imageLit = url => {
+  return {
+    type: 'image',
+    originalContentUrl: url,
+    previewImageUrl: url,
+    animated: false
+  }
+}
 
 // simple reply function
 export const replyText = (token, texts) => {
   texts = Array.isArray(texts) ? texts : [texts]
   return client.replyMessage(token, texts.map(text => ({ type: 'text', text })))
+}
+
+export const endText = token => {
+  const texts = [
+    'ขอบคุณที่ใช้บริการ  น้องรพี ยินดีให้บริการ   หากคุณมีข้อสงสัยเกี่ยวกับเรื่องกฏหมาย นึกถึงน้องรพีนะครับ\nช่วงนี้อากาศเริ่มหนาว  ดูแลสุขภาพด้วยนะครับ  น้องรพีเป็นห่วงครับ'
+  ]
+  return client.replyMessage(token, texts.map(text => ({ type: 'text', text })))
+}
+
+export const replyImage = (token, url) => {
+  return client.replyMessage(token, [imageLit(url)])
+}
+
+export const responseDialog = (token, array) => {
+  const parser = array.map(item => {
+    if (item.type == 'image') {
+      return imageLit(item.url)
+    } else if (item.type == 'text') {
+      return textLit(item.text)
+    }
+  })
+  const endText = textLit(
+    'ขอบคุณที่ไว้วางใจน้องรพีนะครับ \nมีข้อสงสัยอะไร ถามน้องรพีได้เลยนะครับ'
+  )
+  return client.replyMessage(token, [...parser, endText])
 }
 
 export const sharePoint = token => {
@@ -62,17 +102,17 @@ export const bailChoice = token => {
     Card.carousel('bail choice', [
       {
         title: 'ต้องการประกันตัวทำอย่างไร ?',
-        desc: 'เลือกปัญหาที่โดนโกง',
+        desc: 'เลือกปัญหา',
         imgUrl:
           'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/bail_bg.png',
         actions: [
           {
-            label: 'การประกันตัวทำอย่างไร',
-            text: 'การประกันตัว ทำยังไง?'
+            label: 'วิธีการประกันตัว',
+            text: 'วิธีการประกันตัว'
           },
           {
-            label: 'ไม่มีเงินประกันตัวทำอย่างไร',
-            text: 'ไม่มีเงินประกันตัว ทำยังไง?'
+            label: 'ไม่มีเงินประกันตัว',
+            text: 'ไม่มีเงินประกันตัว'
           }
         ]
       }

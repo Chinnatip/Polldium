@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.content = [
-    'http://www.oja.go.th/TH/lawinfographics2018.html?fbclid=IwAR1ajPxzMbXb5IsY4vsBfePqtW8ijuRGQ5ZDjLwjXeXZhmsA-TE5_1P1zO8'
-];
+exports.trick = 'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/bail_trick.jpg';
+exports.noMoney = 'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/bail_nomoney.jpg';
 //# sourceMappingURL=bail_out.js.map

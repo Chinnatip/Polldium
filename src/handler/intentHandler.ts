@@ -50,29 +50,55 @@ export const intentHandler = async (message, source, replyToken) => {
       return Handler.accidentChoice(replyToken)
     case 'ศึกษากฎหมายใหม่':
       await Richmenu.sharePage(userId)
-      return Handler.replyText(replyToken, ['1', '2', '3'])
+      return Handler.replyText(replyToken, ['ข้อมุบลกฎหมายใหม่'])
 
     // Reader
     case 'โกงเงิน':
-      return Handler.replyText(replyToken, CheatMoney.content)
+      // return Handler.replyText(replyToken, CheatMoney.content)
+      return Handler.responseDialog(
+        replyToken,
+        CheatMoney.content.map(text => {
+          return { type: 'text', text }
+        })
+      )
     case 'โกงที่ดิน':
-      return Handler.replyText(replyToken, CheatLand.content)
-    case 'ทวงหนี้ยังไงดี':
-      return Handler.replyText(replyToken, MortgageHowTo.content)
-    case 'ทวงหนี้ยังไงไม่ติดคุก':
+      // return Handler.replyText(replyToken, CheatLand.content)
+      return Handler.responseDialog(
+        replyToken,
+        CheatLand.content.map(text => {
+          return { type: 'text', text }
+        })
+      )
+    case 'ทวงหนี้ไม่ได้ทำยังไงดี ?':
+      return Handler.responseDialog(replyToken, MortgageHowTo.content)
+    case 'ทวงหนี้ยังไงไม่ให้ติดคุก ?':
       return Handler.replyText(replyToken, MortgageTrick.content)
     case 'ติดหนี้':
-      return Handler.replyText(replyToken, ['1', '2', '3'])
-    case 'ติดหนี้แบบอื่นๆ':
-      return Handler.replyText(replyToken, ['1', '2', '3'])
+      return Handler.responseDialog(replyToken, MortgageHowTo.payee)
+    case 'อื่นๆ':
+      return Handler.responseDialog(replyToken, MortgageHowTo.payee)
     case 'ประกันภัย':
-      return Handler.replyText(replyToken, Accident.insurance)
+      return Handler.responseDialog(
+        replyToken,
+        Accident.insurance.map(text => {
+          return { type: 'text', text }
+        })
+      )
     case 'ค่าเสียหาย':
-      return Handler.replyText(replyToken, Accident.fee)
-    case 'การประกันตัวทำอย่างไร':
-      return Handler.replyText(replyToken, Accident.insurance)
-    case 'ไม่มีเงินประกันตัวทำอย่างไร':
-      return Handler.replyText(replyToken, Accident.fee)
+      return Handler.responseDialog(
+        replyToken,
+        Accident.fee.map(text => {
+          return { type: 'text', text }
+        })
+      )
+    case 'วิธีการประกันตัว':
+      return Handler.responseDialog(replyToken, [
+        { type: 'image', url: BailOut.trick }
+      ])
+    case 'ไม่มีเงินประกันตัว':
+      return Handler.responseDialog(replyToken, [
+        { type: 'image', url: BailOut.noMoney }
+      ])
 
     // Drawer
     case 'โหวตเลย':

@@ -45,10 +45,45 @@ var flex_share_card_1 = require("../flex_message/flex_share_card");
 var flex_calling_1 = require("../flex_message/flex_calling");
 var Card = require("../flex_message/carousel_card");
 var Cheat = require("../content/cheat");
+var textLit = function (text) {
+    return {
+        type: 'text',
+        text: text
+    };
+};
+var imageLit = function (url) {
+    return {
+        type: 'image',
+        originalContentUrl: url,
+        previewImageUrl: url,
+        animated: false
+    };
+};
 // simple reply function
 exports.replyText = function (token, texts) {
     texts = Array.isArray(texts) ? texts : [texts];
     return client.replyMessage(token, texts.map(function (text) { return ({ type: 'text', text: text }); }));
+};
+exports.endText = function (token) {
+    var texts = [
+        'ขอบคุณที่ใช้บริการ  น้องรพี ยินดีให้บริการ   หากคุณมีข้อสงสัยเกี่ยวกับเรื่องกฏหมาย นึกถึงน้องรพีนะครับ\nช่วงนี้อากาศเริ่มหนาว  ดูแลสุขภาพด้วยนะครับ  น้องรพีเป็นห่วงครับ'
+    ];
+    return client.replyMessage(token, texts.map(function (text) { return ({ type: 'text', text: text }); }));
+};
+exports.replyImage = function (token, url) {
+    return client.replyMessage(token, [imageLit(url)]);
+};
+exports.responseDialog = function (token, array) {
+    var parser = array.map(function (item) {
+        if (item.type == 'image') {
+            return imageLit(item.url);
+        }
+        else if (item.type == 'text') {
+            return textLit(item.text);
+        }
+    });
+    var endText = textLit('ขอบคุณที่ไว้วางใจน้องรพีนะครับ \nมีข้อสงสัยอะไร ถามน้องรพีได้เลยนะครับ');
+    return client.replyMessage(token, parser.concat([endText]));
 };
 exports.sharePoint = function (token) {
     return client.replyMessage(token, [
@@ -88,16 +123,16 @@ exports.bailChoice = function (token) {
         Card.carousel('bail choice', [
             {
                 title: 'ต้องการประกันตัวทำอย่างไร ?',
-                desc: 'เลือกปัญหาที่โดนโกง',
+                desc: 'เลือกปัญหา',
                 imgUrl: 'https://nong-rapee-chatbot.s3-ap-southeast-1.amazonaws.com/assets/bail_bg.png',
                 actions: [
                     {
-                        label: 'การประกันตัวทำอย่างไร',
-                        text: 'การประกันตัว ทำยังไง?'
+                        label: 'วิธีการประกันตัว',
+                        text: 'วิธีการประกันตัว'
                     },
                     {
-                        label: 'ไม่มีเงินประกันตัวทำอย่างไร',
-                        text: 'ไม่มีเงินประกันตัว ทำยังไง?'
+                        label: 'ไม่มีเงินประกันตัว',
+                        text: 'ไม่มีเงินประกันตัว'
                     }
                 ]
             }
