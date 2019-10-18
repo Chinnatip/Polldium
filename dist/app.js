@@ -10,6 +10,6 @@ var port = process.env.PORT || 3000;
 //
 app.post('/webhook', line.middleware(config), webhookHandler);
 app.listen(port, function () {
-    console.log("listening on " + port);
+    console.log("listening on " + port + "\n\n    you can connect to Nongrapee by send \n\n    POST-request to http://localhost:3000/webhook \n\n    ");
 });
 //# sourceMappingURL=app.js.map
